@@ -87,7 +87,7 @@ ShaderEffect {
             float alpha = 0.0;
 
             float frameShadow = max2(positiveLog(-coords * frameShadowCoeff + vec2(1.0)) + positiveLog(coords * frameShadowCoeff - (vec2(frameShadowCoeff) - vec2(1.0))));
-            frameShadow = max(sqrt(frameShadow), 0.0);
+            frameShadow = clamp(sqrt(frameShadow), 0.0, 1.0);
             color *= frameShadow;
             alpha = sum2(1.0 - step(vec2(0.0), coords) + step(vec2(1.0), coords));
             alpha = clamp(alpha, 0.0, 1.0);

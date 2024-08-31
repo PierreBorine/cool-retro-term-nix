@@ -1,3 +1,8 @@
+### Fork
+
+- Rewriten the config system so it is located in ~/.config and makes it possible to add profiles with Nix
+- Merged a couple fixes from other people
+
 # cool-retro-term
 
 |> Default Amber|C:\ IBM DOS|$ Default Green|

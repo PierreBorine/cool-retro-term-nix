@@ -221,8 +221,6 @@ QtObject {
                             fontWidth)
     }
 
-    property Storage storage: Storage {}
-
     function stringify(obj) {
         var replacer = function (key, val) {
             return val.toFixed ? Number(val.toFixed(4)) : val
@@ -286,8 +284,8 @@ QtObject {
     }
 
     function loadSettings() {
-        var settingsString = storage.getSetting("_CURRENT_SETTINGS")
-        var profileString = storage.getSetting("_CURRENT_PROFILE")
+        var settingsString = settings.getSetting("settings")
+        var profileString = settings.getSetting("profile")
 
         if (!settingsString)
             return
@@ -305,8 +303,8 @@ QtObject {
         var settingsString = composeSettingsString()
         var profileString = composeProfileString()
 
-        storage.setSetting("_CURRENT_SETTINGS", settingsString)
-        storage.setSetting("_CURRENT_PROFILE", profileString)
+        settings.setSetting("settings", settingsString)
+        settings.setSetting("profile", profileString)
 
         if (verbose) {
             console.log("Storing settings: " + settingsString)
@@ -393,11 +391,11 @@ QtObject {
     }
 
     function storeCustomProfiles() {
-        storage.setSetting("_CUSTOM_PROFILES", composeCustomProfilesString())
+        settings.setSetting("custom_profiles", composeCustomProfilesString())
     }
 
     function loadCustomProfiles() {
-        var customProfileString = storage.getSetting("_CUSTOM_PROFILES")
+        var customProfileString = settings.getProfiles()
         if (customProfileString === undefined)
             customProfileString = "[]"
         loadCustomProfilesString(customProfileString)
@@ -770,7 +768,6 @@ QtObject {
     Component.onDestruction: {
         storeSettings()
         storeCustomProfiles()
-        //        storage.dropSettings(); //DROPS THE SETTINGS!.. REMEMBER TO DISABLE ONCE ENABLED!!
     }
 
     // VARS ///////////////////////////////////////////////////////////////////

@@ -15,6 +15,7 @@
 #include <QLoggingCategory>
 
 #include <fileio.h>
+#include <settings.h>
 #include <monospacefontmanager.h>
 
 QString getNamedArgument(QStringList args, QString name, QString defaultName)
@@ -101,6 +102,7 @@ int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty("workdir", getNamedArgument(args, "--workdir", "$HOME"));
     engine.rootContext()->setContextProperty("fileIO", &fileIO);
+    engine.rootContext()->setContextProperty("settings", new Settings());
     engine.rootContext()->setContextProperty("monospaceSystemFonts", monospaceFontManager.retrieveMonospaceFonts());
 
     engine.rootContext()->setContextProperty("devicePixelRatio", app.devicePixelRatio());

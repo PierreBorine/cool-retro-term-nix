@@ -61,7 +61,6 @@ parts:
       - qml-module-qtquick2
       - qml-module-qtgraphicaleffects
       - qml-module-qtquick-dialogs 
-      - qml-module-qtquick-localstorage
       - qml-module-qtquick-window2
       - libgl1-mesa-dev
       - qtdeclarative5-dev-tools

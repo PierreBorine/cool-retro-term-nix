@@ -1,14 +1,16 @@
-QT += qml quick widgets sql quickcontrols2
+QT += qml quick widgets quickcontrols2
 TARGET = cool-retro-term 
 
 DESTDIR = $$OUT_PWD/../
 
 HEADERS += \
     fileio.h \
+    settings.h \
     monospacefontmanager.h
 
 SOURCES = main.cpp \
     fileio.cpp \
+    settings.cpp \
     monospacefontmanager.cpp
 
 macx:ICON = icons/crt.icns

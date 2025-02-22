@@ -1,15 +1,84 @@
-### Fork
-
-- Rewriten the config system so it is located in ~/.config and makes it possible to add profiles with Nix
-- Merged a couple fixes from other people
-
 # cool-retro-term
 
 |> Default Amber|C:\ IBM DOS|$ Default Green|
 |---|---|---|
 |![Default Amber Cool Retro Term](https://user-images.githubusercontent.com/121322/32070717-16708784-ba42-11e7-8572-a8fcc10d7f7d.gif)|![IBM DOS](https://user-images.githubusercontent.com/121322/32070716-16567e5c-ba42-11e7-9e64-ba96dfe9b64d.gif)|![Default Green Cool Retro Term](https://user-images.githubusercontent.com/121322/32070715-163a1c94-ba42-11e7-80bb-41fbf10fc634.gif)|
 
-## Description
+## Fork
+- Merged a couple fixes from other people
+- Rewriten the config system so it is located in ~/.config as plain files instead of sqlite json
+- Provide a Nix flake for easy installation and profile configuration
+
+## Nix
+This fork provides a Nix flake containing a **package**, an **overlay** and a **Home Manager module**.
+
+### Usage
+Add this flake to your inputs.
+```Nix
+inputs.cool-retro-term = {
+  url = "github:PierreBorine/cool-retro-term-nix";
+  inputs.nixpkgs.follows = "nixpkgs";
+};
+```
+
+The package can be obtained using any of these
+```Nix
+inputs.cool-retro-term.packages.${pkgs.system}.default
+inputs.cool-retro-term.packages.${pkgs.system}.cool-retro-term
+inputs.cool-retro-term.packages.${pkgs.system}.crt
+```
+
+The Home Manager module can be used like this
+```Nix
+# home-manager.nix
+{inputs, ...}: {
+  imports = [inputs.cool-retro-term.homeManagerModules.default];
+
+  programs.cool-retro-term = {
+    enable = true;
+    profiles = [
+      # Import a simple json file
+      # You can easily create a theme from inside
+      # the app, export it as json and add it here.
+      ./pink.json
+
+      # Or use an attribute set with the following attributes.
+      {
+        name = "My nice profile";
+        options = {
+          backgroundColor = "#000000";
+          fontColor = "#0ccc68";
+          frameColor = "#ffffff";
+          flickering = 0.1;
+          horizontalSync = 0.08;
+          staticNoise = 0.048;
+          chromaColor = 0;
+          saturationColor = 0;
+          frameGloss = 0;
+          screenCurvature = 0.3;
+          glowingLine = 0;
+          burnIn = 0.2517;
+          bloom = 0.5538;
+          rasterization = 0;
+          jitter = 0.1033;
+          rbgShift = 0;
+          brightness = 0.5;
+          contrast = 0.7959;
+          ambientLight = 0.2;
+          windowOpacity = 1;
+          fontName = "TERMINUS_SCALED";
+          fontWidth = 1;
+          margin = 0.5;
+          blinkingCursor = false;
+          frameMargin = 0.1;
+        };
+      }
+    ];
+  };
+}
+```
+
+## Original description
 cool-retro-term is a terminal emulator which mimics the look and feel of the old cathode tube screens.
 It has been designed to be eye-candy, customizable, and reasonably lightweight.
 

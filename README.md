@@ -4,12 +4,12 @@
 |---|---|---|
 |![Default Amber Cool Retro Term](https://user-images.githubusercontent.com/121322/32070717-16708784-ba42-11e7-8572-a8fcc10d7f7d.gif)|![IBM DOS](https://user-images.githubusercontent.com/121322/32070716-16567e5c-ba42-11e7-9e64-ba96dfe9b64d.gif)|![Default Green Cool Retro Term](https://user-images.githubusercontent.com/121322/32070715-163a1c94-ba42-11e7-80bb-41fbf10fc634.gif)|
 
-## Fork
+## 🔧 Fork
 - Merged a couple fixes from other people
 - Rewriten the config system so it is located in ~/.config as plain files instead of sqlite json
 - Provide a Nix flake for easy installation and profile configuration
 
-## Nix
+## ❄️ Nix
 This fork provides a Nix flake containing a **package**, an **overlay** and a **Home Manager module**.
 
 ### Usage

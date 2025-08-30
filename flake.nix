@@ -24,10 +24,18 @@
       }
     );
 
-    homeManagerModules = {
-      default = self.homeManagerModules.crt;
-      cool-retro-term = self.homeManagerModules.crt;
+    homeModules = {
+      default = self.homeModules.crt;
+      cool-retro-term = self.homeModules.crt;
       crt = import ./nix/hm.nix self;
+    };
+
+    homeManagerModules = let
+      deprecateTo = builtins.warn "cool-retro-term-nix: `homeManagerModules` is deprecated, please use `homeModules` instead.";
+    in {
+      default = deprecateTo self.homeModules.crt;
+      cool-retro-term = deprecateTo self.homeModules.crt;
+      crt = deprecateTo self.homeModules.crt;
     };
 
     overlays = {

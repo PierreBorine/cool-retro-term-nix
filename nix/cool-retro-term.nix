@@ -9,8 +9,8 @@
 , nixosTests
 }:
 stdenv.mkDerivation {
-  version = "1.2.0";
   pname = "cool-retro-term";
+  version = "1.2.0";
 
   src = ../.;
 
@@ -34,7 +34,7 @@ stdenv.mkDerivation {
     mv $out/usr/share $out/share
     mv $out/usr/bin $out/bin
     rmdir $out/usr
-  '' + lib.optionalString stdenv.isDarwin ''
+  '' + lib.optionalString stdenv.hostPlatform.isDarwin ''
     ln -s $out/bin/cool-retro-term.app/Contents/MacOS/cool-retro-term $out/bin/cool-retro-term
   '';
 
@@ -50,7 +50,6 @@ stdenv.mkDerivation {
     homepage = "https://github.com/PierreBorine/cool-retro-term";
     license = lib.licenses.gpl3Plus;
     platforms = with lib.platforms; linux ++ darwin;
-    maintainers = [ ];
     mainProgram = "cool-retro-term";
   };
 }

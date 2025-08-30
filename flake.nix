@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "Terminal emulator which mimics the old cathode display, with nix compatible config.";
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 

@@ -12,7 +12,7 @@ stdenv.mkDerivation {
   pname = "cool-retro-term";
   version = "1.2.0";
 
-  src = ../.;
+  src = lib.cleanSource ../.;
 
   patchPhase = ''
     sed -i -e '/qmltermwidget/d' cool-retro-term.pro

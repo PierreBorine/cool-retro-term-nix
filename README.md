@@ -23,9 +23,9 @@ inputs.cool-retro-term = {
 
 The package can be obtained using any of these
 ```Nix
-inputs.cool-retro-term.packages.${pkgs.system}.default
-inputs.cool-retro-term.packages.${pkgs.system}.cool-retro-term
-inputs.cool-retro-term.packages.${pkgs.system}.crt
+inputs.cool-retro-term.packages.${system}.default
+inputs.cool-retro-term.packages.${system}.cool-retro-term
+inputs.cool-retro-term.packages.${system}.crt
 ```
 
 The Home Manager module can be used like this

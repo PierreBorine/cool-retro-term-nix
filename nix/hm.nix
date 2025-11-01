@@ -66,7 +66,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = [self.packages.${pkgs.system}.cool-retro-term];
+    home.packages = [self.packages.${pkgs.stdenv.hostPlatform.system}.cool-retro-term];
 
     xdg.configFile = builtins.listToAttrs (builtins.map (x: let
         name =

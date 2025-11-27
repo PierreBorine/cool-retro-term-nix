@@ -32,7 +32,7 @@ The Home Manager module can be used like this
 ```Nix
 # home-manager.nix
 {inputs, ...}: {
-  imports = [inputs.cool-retro-term.homeManagerModules.default];
+  imports = [inputs.cool-retro-term.homeModules.default];
 
   programs.cool-retro-term = {
     enable = true;

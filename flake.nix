@@ -42,7 +42,7 @@
       default = self.overlays.crt;
       cool-retro-term = self.overlays.crt;
       crt = _: prev: {
-        cool-retro-term = self.packages.${prev.system}.default;
+        cool-retro-term = self.packages.${prev.stdenv.hostPlatform.system}.default;
       };
     };
   };
